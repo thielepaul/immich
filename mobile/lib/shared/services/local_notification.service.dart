@@ -30,10 +30,16 @@ class LocalNotificationService {
 
   Future<void> setup() async {
     const androidSetting = AndroidInitializationSettings('notification_icon');
-    const iosSetting = DarwinInitializationSettings();
+    const darwinSetting = DarwinInitializationSettings();
+    const linuxSetting =
+        LinuxInitializationSettings(defaultActionName: 'immich');
 
-    const initSettings =
-        InitializationSettings(android: androidSetting, iOS: iosSetting);
+    const initSettings = InitializationSettings(
+      android: androidSetting,
+      iOS: darwinSetting,
+      macOS: darwinSetting,
+      linux: linuxSetting,
+    );
 
     await _localNotificationPlugin.initialize(
       initSettings,

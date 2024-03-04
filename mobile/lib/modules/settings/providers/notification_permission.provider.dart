@@ -29,6 +29,10 @@ class NotificationPermissionNotifier extends StateNotifier<PermissionStatus> {
   }
 
   Future<PermissionStatus> getNotificationPermission() async {
+    // if platform is not supported, return restricted
+    if (!Platform.isAndroid && !Platform.isIOS) {
+      return PermissionStatus.restricted;
+    }
     final status = await Permission.notification.status;
     state = status;
     return status;

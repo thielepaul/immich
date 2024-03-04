@@ -56,3 +56,6 @@ libisar.so
 
 # FVM Version Cache
 .fvm/flutter_sdk
+
+macos
+linux
